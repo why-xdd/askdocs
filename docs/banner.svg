@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 200" width="580" height="200" role="img" aria-label="askdocs — local hybrid retrieval over your own documents, with an eval command that measures whether it helps.">
+  <title>askdocs</title>
+  <defs>
+    <radialGradient id="adGlow" cx="80%" cy="20%" r="70%">
+      <stop offset="0%" stop-color="#A78BFA" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="580" height="200" rx="12" fill="#11161D" stroke="#1F2833" stroke-width="2"/>
+  <rect width="580" height="200" rx="12" fill="url(#adGlow)"/>
+  <rect x="0" y="0" width="4" height="200" rx="2" fill="#A78BFA"/>
+
+  <g font-family="ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace">
+    <text x="28" y="42" font-size="19" font-weight="700" fill="#E6EDF3">askdocs</text>
+    <rect x="128" y="26" width="76" height="20" rx="10" fill="#A78BFA" fill-opacity="0.12" stroke="#5B21B6"/>
+    <text x="166" y="40" font-size="10" fill="#A78BFA" text-anchor="middle">Python</text>
+
+    <text x="28" y="70" font-size="12.5" fill="#8B98A8">Ask your own documents, locally. Hybrid retrieval</text>
+    <text x="28" y="90" font-size="12.5" fill="#8B98A8">that finds PAY_1004 <tspan fill="#3D4956">and</tspan> "why did this fail".</text>
+
+    <!-- Two rankings fusing into one. Fusion is the idea; everything else is
+         plumbing, so nothing else is drawn. -->
+    <g transform="translate(28 112)">
+      <text x="0" y="8" font-size="9" fill="#5A6675">BM25</text>
+      <rect x="0" y="14" width="52" height="7" rx="3.5" fill="#22D3EE"/>
+      <rect x="0" y="25" width="38" height="7" rx="3.5" fill="#22D3EE" fill-opacity="0.55"/>
+      <rect x="0" y="36" width="26" height="7" rx="3.5" fill="#22D3EE" fill-opacity="0.3"/>
+
+      <text x="0" y="60" font-size="9" fill="#5A6675">VECTORS</text>
+      <rect x="0" y="66" width="44" height="7" rx="3.5" fill="#F472B6"/>
+
+      <path d="M 60 26 C 78 26 78 44 96 44" fill="none" stroke="#2C3846" stroke-width="1.5"/>
+      <path d="M 52 70 C 76 70 76 48 96 48" fill="none" stroke="#2C3846" stroke-width="1.5"/>
+
+      <rect x="100" y="30" width="46" height="32" rx="6" fill="#161C25" stroke="#A78BFA"/>
+      <text x="123" y="50" font-size="10" fill="#A78BFA" text-anchor="middle">RRF</text>
+
+      <path d="M 150 46 L 168 46" stroke="#2C3846" stroke-width="1.5"/>
+      <rect x="172" y="34" width="60" height="7" rx="3.5" fill="#34D399"/>
+      <rect x="172" y="45" width="46" height="7" rx="3.5" fill="#34D399" fill-opacity="0.6"/>
+      <rect x="172" y="56" width="34" height="7" rx="3.5" fill="#34D399" fill-opacity="0.35"/>
+    </g>
+
+    <g transform="translate(388 112)">
+      <text x="0" y="8" font-size="10" fill="#5A6675">MEASURED, NOT CLAIMED</text>
+      <text x="0" y="30" font-size="11" fill="#5A6675">lexical  <tspan fill="#8B98A8">88%</tspan>  MRR <tspan fill="#8B98A8">0.72</tspan></text>
+      <text x="0" y="48" font-size="11" fill="#5A6675">dense    <tspan fill="#8B98A8">94%</tspan>  MRR <tspan fill="#8B98A8">0.73</tspan></text>
+      <text x="0" y="66" font-size="11" fill="#5A6675">hybrid   <tspan fill="#34D399">94%</tspan>  MRR <tspan fill="#34D399">0.81</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,82 @@
+[
+  {
+    "query": "PAY_1004",
+    "relevant": ["errors.md"],
+    "note": "Bare error code. Lexical retrieval should find this trivially; dense embeddings often cannot, because an opaque identifier has no semantics to embed."
+  },
+  {
+    "query": "PAYMENTS_SHUTDOWN_GRACE",
+    "relevant": ["deployment.md"],
+    "note": "An exact config key. The canonical case for keeping BM25 in a RAG stack."
+  },
+  {
+    "query": "what happens when I reuse an idempotency key with a different body",
+    "relevant": ["api.md", "errors.md"],
+    "note": "Phrased as a question; the documents say it in different words."
+  },
+  {
+    "query": "how do we ship a new release without downtime",
+    "relevant": ["deployment.md"],
+    "note": "No shared vocabulary with the document, which says 'blue-green' and 'flip'."
+  },
+  {
+    "query": "why is money stored as whole numbers rather than decimals",
+    "relevant": ["api.md"],
+    "note": "The document never says 'whole numbers'; it says 'integers in the minor unit'."
+  },
+  {
+    "query": "the alert says p99 latency is high, where do I start",
+    "relevant": ["oncall.md"],
+    "note": "Mixes an exact alert name with a paraphrased question."
+  },
+  {
+    "query": "pg_stat_statements",
+    "relevant": ["oncall.md"],
+    "note": "An exact identifier buried in prose."
+  },
+  {
+    "query": "I'm new here and don't know who to talk to",
+    "relevant": ["onboarding.md"],
+    "note": "Pure paraphrase; almost no term overlap with the document."
+  },
+  {
+    "query": "can I keep production credentials permanently",
+    "relevant": ["security.md"],
+    "note": "The answer is a negation, which lexical matching handles poorly."
+  },
+  {
+    "query": "what do we do about tests that fail intermittently",
+    "relevant": ["testing.md"],
+    "note": "The document calls them 'flaky'; the question does not."
+  },
+  {
+    "query": "why is the ledger its own service",
+    "relevant": ["architecture.md"],
+    "note": "Close to the document's own heading."
+  },
+  {
+    "query": "INF_2003 Redis unreachable",
+    "relevant": ["errors.md"],
+    "note": "Code plus description."
+  },
+  {
+    "query": "how many requests per second am I allowed",
+    "relevant": ["api.md"],
+    "note": "The document says 'rate limits' and 'sixty requests per second'."
+  },
+  {
+    "query": "where do background jobs like sending emails run",
+    "relevant": ["architecture.md"],
+    "note": "The document says 'asynchronous work' and 'worker fleet'."
+  },
+  {
+    "query": "is it ok to escalate if I am stuck",
+    "relevant": ["oncall.md"],
+    "note": "Conversational phrasing of a runbook policy."
+  },
+  {
+    "query": "what must never appear in logs",
+    "relevant": ["security.md"],
+    "note": "Requires matching 'never logged' from a differently-worded question."
+  }
+]

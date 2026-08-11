@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.11", "3.12", "3.13"]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install
+        run: pip install -e ".[dev]"
+
+      - name: Lint
+        run: ruff check .
+
+      - name: Test
+        run: pytest -q
+
+      # The README publishes exact retrieval numbers. This re-runs them so a
+      # change that quietly degrades recall fails the build instead of shipping.
+      - name: Retrieval quality gate
+        if: matrix.python-version == '3.12' && runner.os == 'Linux'
+        run: |
+          askdocs index examples/docs --embedder tfidf --out ci-index.db
+          askdocs eval examples/questions.json --index ci-index.db --json ci-eval.json
+          python - <<'PY'
+          import json, sys
+          results = {r["mode"]: r for r in json.load(open("ci-eval.json"))}
+          hybrid = results["hybrid"]["recall_at_k"]
+          print(f"hybrid recall@5 = {hybrid:.0%}")
+          for mode in ("lexical", "dense"):
+              if hybrid < results[mode]["recall_at_k"]:
+                  sys.exit(f"hybrid lost to {mode} on recall")
+              if results["hybrid"]["mrr"] < results[mode]["mrr"]:
+                  sys.exit(f"hybrid lost to {mode} on MRR - the README's central claim is wrong")
+          if hybrid < 0.9:
+              sys.exit(f"hybrid recall regressed to {hybrid:.0%}, expected >= 90%")
+          PY
