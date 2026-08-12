@@ -164,11 +164,11 @@ askdocs ask "how do I roll back a deploy" --generate --model qwen2.5:7b
 askdocs eval questions.json -k 5 --json results.json
 ```
 
-```
-[1] docs/deployment.md#Rolling out a new version  bm25 #3 · vector #9
-    Deployments are blue-green. The new colour is brought up alongside the old
-    one, health-checked, then the load balancer is flipped in a single operation…
-```
+<img src="https://raw.githubusercontent.com/why-xdd/askdocs/main/docs/ranks.png" alt="askdocs ask with ranks: onboarding.md first at bm25 #2 and vector #1, with BM25's own top hit pushed to second place" width="100%"/>
+
+*`--show-ranks` is the argument for fusion in one screen. BM25 ranked
+`deployment.md` first — it shares the words. The vector ranking knew the question
+was about people, and fusion put `onboarding.md` on top.*
 
 ---
 
