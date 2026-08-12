@@ -40,16 +40,7 @@ on prose, and you cannot know which you have without running it.
 On the [example corpus](examples/) — eight pages of internal documentation, 16
 questions, using the built-in no-download embedder:
 
-```
-16 questions · top-5 · tfidf-hash-512
-┌─────────┬──────────┬───────┬────────┐
-│ mode    │ recall@5 │   MRR │ misses │
-├─────────┼──────────┼───────┼────────┤
-│ lexical │      88% │ 0.724 │      2 │
-│ dense   │      94% │ 0.731 │      1 │
-│ hybrid  │      94% │ 0.809 │      1 │
-└─────────┴──────────┴───────┴────────┘
-```
+<img src="https://raw.githubusercontent.com/why-xdd/askdocs/main/docs/terminal.png" alt="askdocs eval: lexical 88% MRR 0.724, dense 94% MRR 0.731, hybrid 94% MRR 0.809" width="100%"/>
 
 Read that carefully, because it is more interesting than a clean sweep. **Hybrid
 does not beat dense on recall here — it ties.** What it wins is MRR, by a clear
